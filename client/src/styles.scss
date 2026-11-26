@@ -1,0 +1,78 @@
+:root {
+  --ink: #1f1b16;
+  --ink-2: #5c544a;
+  --muted: #8a8177;
+  --paper: #f7f3ee;
+  --card: #ffffff;
+  --line: #e7dfd5;
+  --accent: #b5562f;      /* terracotta */
+  --accent-2: #2f5d50;    /* deep sage */
+  --gold: #c49a4a;
+  --shadow: 0 1px 2px rgba(31, 27, 22, .06), 0 8px 24px rgba(31, 27, 22, .06);
+  --radius: 14px;
+  color-scheme: light;
+}
+:root.dark {
+  --ink: #f3ede6; --ink-2: #cfc6bb; --muted: #9d9488; --paper: #14120f; --card: #1d1a16; --line: #2e2a24;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: 'Heebo', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; margin: 0; }
+h2 { font-size: 19px; margin-bottom: 14px; }
+a { color: var(--accent); }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.spacer { flex: 1; }
+.muted { color: var(--muted); font-size: 13px; }
+.mt { margin-top: 16px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  border-radius: 10px; padding: 8px 14px; font: inherit; font-size: 14px; cursor: pointer; transition: .15s; text-decoration: none;
+  &:hover { border-color: var(--accent); }
+  &.primary { background: var(--accent); border-color: var(--accent); color: #fff; &:hover { filter: brightness(1.08); } }
+  &.sage { background: var(--accent-2); border-color: var(--accent-2); color: #fff; }
+  &.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  &:disabled { opacity: .5; cursor: default; }
+}
+input, select, textarea {
+  font: inherit; font-size: 14px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; outline: none;
+  &:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+}
+textarea { width: 100%; resize: vertical; }
+label { font-size: 13px; color: var(--ink-2); display: grid; gap: 4px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: right; font-weight: 500; color: var(--muted); font-size: 12px; padding: 8px; border-bottom: 1px solid var(--line); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--line); }
+
+.chip { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); white-space: nowrap; }
+.chip.sage { background: color-mix(in srgb, var(--accent-2) 14%, transparent); color: var(--accent-2); }
+.chip.gold { background: color-mix(in srgb, var(--gold) 18%, transparent); color: #8a6a26; }
+.chip.red { background: #fde8e4; color: #b42318; }
+.num { font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 700; }
+.page-head { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+  h1 { font-size: 30px; }
+  p { margin: 4px 0 0; color: var(--muted); }
+}
+
+@media print {
+  aside, .no-print { display: none !important; }
+  body { background: #fff; }
+  main { padding: 0 !important; }
+  .card { box-shadow: none; border: none; }
+}

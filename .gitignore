@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.angular/
+bin/
+obj/
+.vs/
+*.user
+*.db
+*.db-shm
+*.db-wal
+.env
+appsettings.Development.json
