@@ -26,7 +26,8 @@ public class GeometryTests
 
     [Fact] public void Regulations_flag_small_room_and_low_ceiling()
     {
-        var plan = new PlanGeometry(240, [], [new Room("x", "קטן", RoomType.Bedroom, Square.ToList(), "m-parquet")], [], []);
+        Pt[] tiny = [new(0, 0), new(250, 0), new(250, 250), new(0, 250)]; // 6.25 m²
+        var plan = new PlanGeometry(240, [], [new Room("x", "קטן", RoomType.Bedroom, tiny.ToList(), "m-parquet")], [], []);
         var failed = Regulations.Check(plan).Where(c => !c.Ok).Select(c => c.Rule).ToList();
         Assert.Contains(failed, r => r.Contains("גובה"));
         Assert.Contains(failed, r => r.Contains("8 מ״ר"));
